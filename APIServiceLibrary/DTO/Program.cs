@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace APIServiceLibrary.DTO
 {
-	public class Channel
+	public class Program
 	{
-		public string Id { get; set; }
-
+		public int Id { get; set; }
+		public ProgramCategory ProgramCategory { get; set; }
+		public Channel Channel { get; set; }
 		public string Name { get; set; }
 	}
 }

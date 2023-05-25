@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace APIServiceLibrary.DTO
 {
-	internal class ProgramCategory
+	public class ProgramCategory
 	{
+		public int Id { get; set; }
+		public string Name { get; set; }
 	}
 }
