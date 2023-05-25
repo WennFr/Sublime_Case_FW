@@ -30,12 +30,11 @@ namespace APIServiceLibrary.Services
 			if (response.IsSuccessStatusCode)
 			{
 				var responseBody = await response.Content.ReadAsStringAsync();
-
-			
-				response = JsonConvert.DeserializeObject<ProgramResponse>(responseBody);
-
+				programs = JsonConvert.DeserializeObject<ProgramResponse>(responseBody);
 			}
-			return ProgramResponse;
+
+
+			return programs;
 
 		}
 
