@@ -10,12 +10,12 @@ using Newtonsoft.Json;
 
 namespace APIServiceLibrary.Services
 {
-	public class APIService
+	public class APIService : IAPIService
 	{
 
 
 
-		public static async Task<ProgramResponse> GetAllPrograms()
+		public async Task<ProgramResponse> GetAllPrograms()
 		{
 			using var client = new HttpClient();
 			client.BaseAddress = new Uri("http://api.sr.se");
