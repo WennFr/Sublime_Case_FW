@@ -10,41 +10,41 @@ using Newtonsoft.Json;
 
 namespace APIServiceLibrary.Services
 {
-	public class APIService : IAPIService
-	{
+    public class APIService : IAPIService
+    {
 
 
 
-		public async Task<ProgramResponse> GetAllPrograms()
-		{
-			using var client = new HttpClient();
-			client.BaseAddress = new Uri("http://api.sr.se");
-			client.DefaultRequestHeaders.Accept.Clear();
-			client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+        public async Task<ProgramResponse> GetAllPrograms()
+        {
+            using var client = new HttpClient();
+            client.BaseAddress = new Uri("http://api.sr.se");
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
 
-			var programs = new ProgramResponse();
+            var programs = new ProgramResponse();
 
-			HttpResponseMessage response = await client.GetAsync("/api/v2/programs?format=json&indent=true&pagination=false&programcategoryid=133");
+            HttpResponseMessage response =
+                await client.GetAsync(
+                    "/api/v2/programs?format=json&indent=true&pagination=false&programcategoryid=133");
 
-			if (response.IsSuccessStatusCode)
-			{
-				var responseBody = await response.Content.ReadAsStringAsync();
-				programs = JsonConvert.DeserializeObject<ProgramResponse>(responseBody);
-			}
-
-
-			return programs;
-
-		}
+            if (response.IsSuccessStatusCode)
+            {
+                var responseBody = await response.Content.ReadAsStringAsync();
+                programs = JsonConvert.DeserializeObject<ProgramResponse>(responseBody);
+            }
 
 
+            return programs;
 
-
-
-	}
+        }
 
 
 
-	}
+
+
+    }
+
 }
+

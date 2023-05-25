@@ -6,3 +6,25 @@
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+
+
+<h2>Programlista - Humor</h2>
+
+@foreach (var program in Model.Programs)
+{
+    <h3>@program.Name</h3>
+
+    <ul>
+
+        <li>
+            <h4>@program.Name</h4>
+            <img src="@program.ProgramImage" alt="Program Image" />
+            <p>@program.Description</p>
+
+            <h5>Senaste podavsnitten:</h5>
+            <ul>
+
+            </ul>
+        </li>
+    </ul>
+}
