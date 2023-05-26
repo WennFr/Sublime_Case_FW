@@ -39,7 +39,7 @@ namespace ProgramMVC.Controllers
                     Id = p.Channel.Id,
                     Name = p.Channel.Name
                 }
-            }).ToList();
+            }).OrderBy(p=> p.Channel.Name).ToList();
 
 
             foreach (var programModel in programModels)

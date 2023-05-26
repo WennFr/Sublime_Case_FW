@@ -16,3 +16,31 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.program-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.program-info {
+    margin-right: 20px;
+    max-width: 30rem;
+}
+
+.program-info img {
+    object-fit: cover;
+    width: auto;
+}
+
+.podfiles {
+    max-width: 15rem;
+}
+
+.podfile {
+    margin-bottom: 10px;
+}
+
+span {
+    font-weight: bold;
+}

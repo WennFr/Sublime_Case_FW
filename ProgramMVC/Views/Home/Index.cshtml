@@ -2,33 +2,30 @@
     ViewData["Title"] = "Home Page";
 }
 
-<h2>Programlista - Humor</h2>
+<h1>Programlista - Humor</h1>
 
 @foreach (var program in Model.Programs)
 {
-    <h3>@program.Name @program.Id</h3>
-
-    <ul>
-
-        <li>
+    <h2>@program.Channel.Name</h2>
+    <div class="program-container">
+        <div class="program-info">
+            <h3>@program.Name @program.Id</h3>
             <img src="@program.ProgramImage" alt="Program Image" />
             <p>@program.Description</p>
-            
+        </div>
+
+        <div class="podfiles">
             <h5>Senaste podavsnitten:</h5>
             @foreach (var pod in @program.Podfiles)
             {
-               
-                <ul>
-                   Titel: @pod.Title
-                </ul>
-                <ul>
-                    Publicerat: @pod.PublishDate
-                </ul>
-                <ul>
-                    Längd: @pod.Duration
-                </ul>
+                <div class="podfile">
+                    <ul>
+                        <li><span>Titel:</span> @pod.Title</li>
+                        <li><span>Publicerat:</span> @pod.PublishDate</li>
+                        <li><span>Längd:</span> @pod.Duration</li>
+                    </ul>
+                </div>
             }
-           
-        </li>
-    </ul>
+        </div>
+    </div>
 }
