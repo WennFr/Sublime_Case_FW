@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace APIServiceLibrary.DTO
+namespace APIServiceLibrary.DTO.EpisodeDTOs
 {
-	public class ProgramResponse
-	{
-		public List<Program> Programs { get; set; }
-
-	}
+    internal class EpisodeResponse
+    {
+    }
 }

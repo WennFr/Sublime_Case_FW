@@ -5,8 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
-using APIServiceLibrary.DTO;
 using Newtonsoft.Json;
+using APIServiceLibrary.DTO.ProgramDTOs;
 
 namespace APIServiceLibrary.Services
 {
@@ -15,7 +15,7 @@ namespace APIServiceLibrary.Services
 
 
 
-        public async Task<ProgramResponse> GetAllPrograms()
+        public async Task<ProgramResponseDTO> GetAllPrograms()
         {
             using var client = new HttpClient();
             client.BaseAddress = new Uri("http://api.sr.se");
@@ -23,7 +23,7 @@ namespace APIServiceLibrary.Services
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
 
-            var programs = new ProgramResponse();
+            var programs = new ProgramResponseDTO();
 
             HttpResponseMessage response =
                 await client.GetAsync(
@@ -32,7 +32,7 @@ namespace APIServiceLibrary.Services
             if (response.IsSuccessStatusCode)
             {
                 var responseBody = await response.Content.ReadAsStringAsync();
-                programs = JsonConvert.DeserializeObject<ProgramResponse>(responseBody);
+                programs = JsonConvert.DeserializeObject<ProgramResponseDTO>(responseBody);
             }
 
 

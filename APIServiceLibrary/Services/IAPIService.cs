@@ -1,4 +1,4 @@
-﻿using APIServiceLibrary.DTO;
+﻿using APIServiceLibrary.DTO.ProgramDTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace APIServiceLibrary.Services
 {
-	public interface IAPIService
+    public interface IAPIService
 	{
-		Task<ProgramResponse> GetAllPrograms();
+		Task<ProgramResponseDTO> GetAllPrograms();
 
 
 	}
