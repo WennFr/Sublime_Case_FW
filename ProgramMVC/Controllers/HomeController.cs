@@ -5,21 +5,24 @@ using APIServiceLibrary.DTO.EpisodeDTOs;
 using APIServiceLibrary.Services;
 using AutoMapper;
 using ProgramMVC.ViewModels;
+using UtilityServiceLibrary.Services;
 
 namespace ProgramMVC.Controllers
 {
     public class HomeController : Controller
     {
-        public HomeController(ILogger<HomeController> logger, IAPIService apiService, IMapper mapper)
+        public HomeController(ILogger<HomeController> logger, IAPIService apiService, IMapper mapper, IUtilityService utilityService)
         {
             _logger = logger;
             _apiService = apiService;
             _mapper = mapper;
+            _utilityService = utilityService;
         }
 
         private readonly ILogger<HomeController> _logger;
         private readonly IAPIService _apiService;
         private readonly IMapper _mapper;
+        private readonly IUtilityService _utilityService;
 
         public async Task<IActionResult> Index()
         {
@@ -40,7 +43,7 @@ namespace ProgramMVC.Controllers
                 {
                     Id = p.Id,
                     Title = p.Title,
-                    PublishDate = p.PublishDateUtc,
+                    PublishDate = _utilityService.ConvertToLocaleDateTime(p.PublishDateUtc),
                     Url = p.Url,
                     Duration = p.Duration,
                 }).ToList();
