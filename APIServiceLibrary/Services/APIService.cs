@@ -24,7 +24,9 @@ namespace APIServiceLibrary.Services
 
             var programs = new ProgramResponseDTO();
 
-            HttpResponseMessage response = await client.GetAsync("/api/v2/programs?format=json&indent=true&pagination=false&programcategoryid=133");
+            HttpResponseMessage response =
+                await client.GetAsync(
+                    "/api/v2/programs?format=json&indent=true&pagination=false&programcategoryid=133");
 
             if (response.IsSuccessStatusCode)
             {
@@ -48,7 +50,8 @@ namespace APIServiceLibrary.Services
 
             var podfiles = new PodfilesResponseDTO();
 
-            HttpResponseMessage response = await client.GetAsync($"http://api.sr.se/api/v2/podfiles?format=json&indent=true&pagination=false&programid={programId}");
+            HttpResponseMessage response = await client.GetAsync(
+                $"http://api.sr.se/api/v2/podfiles?format=json&indent=true&pagination=false&programid={programId}");
 
             if (response.IsSuccessStatusCode)
             {
@@ -63,4 +66,6 @@ namespace APIServiceLibrary.Services
         }
 
     }
+
+}
 
