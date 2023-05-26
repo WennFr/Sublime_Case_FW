@@ -3,6 +3,7 @@ using ProgramMVC.Models;
 using System.Diagnostics;
 using APIServiceLibrary.DTO.EpisodeDTOs;
 using APIServiceLibrary.Services;
+using ProgramMVC.ViewModels;
 
 namespace ProgramMVC.Controllers
 {
@@ -43,7 +44,7 @@ namespace ProgramMVC.Controllers
 
             foreach (var programModel in programModels)
             {
-                var podfileResponse = await _apiService.GetPodfilesByProgramId(programModel.Id); // Fetch podfile DTOs for the program
+                var podfileResponse = await _apiService.GetPodfilesByProgramId(programModel.Id); 
                 programModel.Podfiles = podfileResponse.Podfiles.Select(p => new PodfilesModel
                 {
                     Id = p.Id,
@@ -55,10 +56,11 @@ namespace ProgramMVC.Controllers
             }
 
 
+            var indexViewModel = new IndexViewModel();
+            indexViewModel.Programs = programModels;
 
 
-
-            return View(programModels);
+            return View(indexViewModel);
         }
 
         public IActionResult Privacy()
