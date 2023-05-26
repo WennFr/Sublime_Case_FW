@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace APIServiceLibrary.DTO.EpisodeDTOs
 {
-    internal class EpisodeResponse
+    public class PodfilesResponseDTO
     {
+
+
+
     }
 }
