@@ -10,7 +10,7 @@ namespace ProgramMVC.Models
         [DisplayFormat(DataFormatString = "{0:yyyy-M-d HH:mm}")]
         public string PublishDate { get; set; }
         public string Url { get; set; }
-        public int Duration { get; set; }
+        public string Duration { get; set; }
 
     }
 }

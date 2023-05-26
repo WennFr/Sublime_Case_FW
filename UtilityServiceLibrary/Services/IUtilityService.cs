@@ -10,5 +10,6 @@ namespace UtilityServiceLibrary.Services
     {
 
         string ConvertToLocaleDateTime(DateTime dateInput);
+        string ConvertSecondsToCompleteDuration(int durationInSeconds);
     }
 }

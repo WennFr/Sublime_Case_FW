@@ -45,7 +45,7 @@ namespace ProgramMVC.Controllers
                     Title = p.Title,
                     PublishDate = _utilityService.ConvertToLocaleDateTime(p.PublishDateUtc),
                     Url = p.Url,
-                    Duration = p.Duration,
+                    Duration = _utilityService.ConvertSecondsToCompleteDuration(p.Duration)
                 }).ToList();
             }
 
