@@ -25,12 +25,15 @@
                         <li><span>Längd:</span> @pod.Duration</li>
                         <audio controls>
                             <source src="@pod.Url" type="audio/mp3">
-                            Your browser does not support the audio element.
                         </audio>
                         <hr>
                     </ul>
                 </div>
             }
+        </div>
+        
+        <div>
+            <a class="btn btn-primary" href="@Url.Action("Program", "Home", new { programId = program.Id })">Visa program</a>
         </div>
     </div>
 }

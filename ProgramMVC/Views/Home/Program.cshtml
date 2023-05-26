@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Program";
+}
+@{; 
+    
+    @if (Model != null)
+    {
+        <h2>@Model.Channel.Name</h2>
+        <div class="program">
+            <div class="program-info">
+                <h3>@Model.Name @Model.Id</h3>
+                <img src="@Model.ProgramImage" alt="Program Image" />
+                <p>@Model.Description</p>
+            </div>
+
+            <div class="podfiles">
+                <h5>Senaste poddavsnitten:</h5>
+                @foreach (var pod in Model.Podfiles)
+                {
+                    <div class="podfile">
+                        <ul>
+                            <li><span>Titel:</span> @pod.Title</li>
+                            <li><span>Publicerat:</span> @pod.PublishDate</li>
+                            <li><span>Längd:</span> @pod.Duration</li>
+                            <audio controls>
+                                <source src="@pod.Url" type="audio/mp3">
+                            </audio>
+                            <hr>
+                        </ul>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+}

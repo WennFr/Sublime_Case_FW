@@ -38,7 +38,7 @@ namespace ProgramMVC.Controllers
                 var pageNo = 1;
                 var size = 3;
 
-                var podfileResponse = await _apiService.GetPodfilesByProgramId(programModel.Id, pageNo, size); 
+                var podfileResponse = await _apiService.GetPodfilesByProgramId(programModel.Id, pageNo, size);
                 programModel.Podfiles = podfileResponse.Podfiles.Select(p => new PodfilesModel
                 {
                     Id = p.Id,
@@ -55,6 +55,33 @@ namespace ProgramMVC.Controllers
 
 
             return View(indexViewModel);
+        }
+
+        public async Task<IActionResult> Program(int programId)
+        {
+            var categoryId = 133;
+            var pageNo = 1;
+            var size = 1000;
+
+
+            var programResponse = await _apiService.GetAllPrograms(categoryId);
+
+            var programModels = _mapper.Map<List<ProgramModel>>(programResponse.Programs);
+            var programModel = programModels.FirstOrDefault(p => p.Id == programId);
+
+           
+
+            var podfileResponse = await _apiService.GetPodfilesByProgramId(programModel.Id, pageNo, size);
+            programModel.Podfiles = podfileResponse.Podfiles.Select(p => new PodfilesModel
+            {
+                Id = p.Id,
+                Title = p.Title,
+                PublishDate = _utilityService.ConvertToLocaleDateTime(p.PublishDateUtc),
+                Url = p.Url,
+                Duration = _utilityService.ConvertSecondsToCompleteDuration(p.Duration)
+            }).ToList();
+
+            return View(programModel);
         }
 
         public IActionResult Privacy()
