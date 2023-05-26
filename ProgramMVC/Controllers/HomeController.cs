@@ -25,7 +25,6 @@ namespace ProgramMVC.Controllers
             foreach (var program in programsModel.Programs)
             {
                 var podfilesModel = await _apiService.GetAllPodfiles(program.Id);
-
                 AllPods.Add(podfilesModel);
             }
 
