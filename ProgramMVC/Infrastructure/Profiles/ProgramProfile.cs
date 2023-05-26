@@ -8,11 +8,8 @@ namespace ProgramMVC.Infrastructure.Profiles
 {
     public class ProgramProfile : Profile
     {
-        private readonly IUtilityService _utilityService;
-
-        public ProgramProfile(IUtilityService utilityService)
+        public ProgramProfile()
         {
-            _utilityService = utilityService;
             CreateMap<ProgramDTO, ProgramModel>()
                 .ForMember(dest => dest.ProgramCategory, opt => opt.MapFrom(src => new ProgramCategoryModel
                 {
