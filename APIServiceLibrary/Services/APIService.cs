@@ -39,7 +39,7 @@ namespace APIServiceLibrary.Services
 
         }
 
-        public async Task<PodfilesResponseDTO> GetAllPodfiles(int programId)
+        public async Task<PodfilesResponseDTO> GetPodfilesByProgramId(int programId)
         {
 
             using var client = new HttpClient();

@@ -15,6 +15,5 @@ namespace APIServiceLibrary.DTO.EpisodeDTOs
         public DateTime PublishDateUtc { get; set; }
         public string Url { get; set; }
         public int Duration { get; set; }
-        public ProgramDTO Program { get; set; }
     }
 }

@@ -12,7 +12,7 @@ namespace APIServiceLibrary.Services
 	{
 		Task<ProgramResponseDTO> GetAllPrograms();
 
-        Task<PodfilesResponseDTO> GetAllPodfiles(int programID);
+        Task<PodfilesResponseDTO> GetPodfilesByProgramId(int programID);
 
     }
 }

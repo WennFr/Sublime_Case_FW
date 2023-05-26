@@ -16,21 +16,48 @@ namespace ProgramMVC.Controllers
 
         private readonly ILogger<HomeController> _logger;
         private readonly IAPIService _apiService;
-        private readonly List<PodfilesResponseDTO> AllPods;
 
         public async Task<IActionResult> Index()
         {
-            var programsModel = await _apiService.GetAllPrograms();
+            var programResponse = await _apiService.GetAllPrograms();
 
-            foreach (var program in programsModel.Programs)
+            var programModels = programResponse.Programs.Select(p => new ProgramModel
             {
-                var podfilesModel = await _apiService.GetAllPodfiles(program.Id);
-                AllPods.Add(podfilesModel);
+                Id = p.Id,
+                Name = p.Name,
+                ProgramImage = p.ProgramImage,
+                Description = p.Description,
+                ProgramCategory = new ProgramCategoryModel
+                {
+                    Id = p.ProgramCategory.Id,
+                    Name = p.ProgramCategory.Name
+                },
+                Channel = new ChannelModel
+                {
+                    Id = p.Channel.Id,
+                    Name = p.Channel.Name
+                }
+            }).ToList();
+
+
+            foreach (var programModel in programModels)
+            {
+                var podfileResponse = await _apiService.GetPodfilesByProgramId(programModel.Id); // Fetch podfile DTOs for the program
+                programModel.Podfiles = podfileResponse.Podfiles.Select(p => new PodfilesModel
+                {
+                    Id = p.Id,
+                    Title = p.Title,
+                    PublishDateUtc = p.PublishDateUtc,
+                    Url = p.Url,
+                    Duration = p.Duration,
+                }).ToList();
             }
 
 
 
-            return View(programsModel);
+
+
+            return View(programModels);
         }
 
         public IActionResult Privacy()

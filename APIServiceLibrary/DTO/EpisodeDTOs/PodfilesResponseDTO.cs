@@ -8,8 +8,7 @@ namespace APIServiceLibrary.DTO.EpisodeDTOs
 {
     public class PodfilesResponseDTO
     {
-
-
+        public List<PodfilesDTO> Podfiles { get; set; }
 
     }
 }
