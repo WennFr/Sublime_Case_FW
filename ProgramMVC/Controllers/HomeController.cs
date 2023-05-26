@@ -19,7 +19,8 @@ namespace ProgramMVC.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var programResponse = await _apiService.GetAllPrograms();
+            var categoryId = 133;
+            var programResponse = await _apiService.GetAllPrograms(categoryId);
 
             var programModels = programResponse.Programs.Select(p => new ProgramModel
             {

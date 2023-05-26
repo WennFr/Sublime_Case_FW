@@ -14,7 +14,7 @@ namespace APIServiceLibrary.Services
     public class APIService : IAPIService
     {
 
-        public async Task<ProgramResponseDTO> GetAllPrograms()
+        public async Task<ProgramResponseDTO> GetAllPrograms(int categoryId)
         {
             using var client = new HttpClient();
             client.BaseAddress = new Uri("http://api.sr.se");
@@ -26,7 +26,7 @@ namespace APIServiceLibrary.Services
 
             HttpResponseMessage response =
                 await client.GetAsync(
-                    "/api/v2/programs?format=json&indent=true&pagination=false&programcategoryid=133");
+                    $"/api/v2/programs?format=json&indent=true&pagination=false&programcategoryid={categoryId}");
 
             if (response.IsSuccessStatusCode)
             {

@@ -10,7 +10,7 @@ namespace APIServiceLibrary.Services
 {
     public interface IAPIService
 	{
-		Task<ProgramResponseDTO> GetAllPrograms();
+		Task<ProgramResponseDTO> GetAllPrograms(int categoryId);
 
         Task<PodfilesResponseDTO> GetPodfilesByProgramId(int programID);
 
