@@ -1,13 +1,18 @@
-﻿using APIServiceLibrary.DTO.ProgramDTOs;
+﻿using APIServiceLibrary.DTO.EpisodeDTOs;
+using APIServiceLibrary.DTO.ProgramDTOs;
 using AutoMapper;
 using ProgramMVC.Models;
+using UtilityServiceLibrary.Services;
 
 namespace ProgramMVC.Infrastructure.Profiles
 {
     public class ProgramProfile : Profile
     {
-        public ProgramProfile()
+        private readonly IUtilityService _utilityService;
+
+        public ProgramProfile(IUtilityService utilityService)
         {
+            _utilityService = utilityService;
             CreateMap<ProgramDTO, ProgramModel>()
                 .ForMember(dest => dest.ProgramCategory, opt => opt.MapFrom(src => new ProgramCategoryModel
                 {

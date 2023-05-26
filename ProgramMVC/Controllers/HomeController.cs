@@ -27,17 +27,16 @@ namespace ProgramMVC.Controllers
         public async Task<IActionResult> Index()
         {
             var categoryId = 133;
-            var programResponse = await _apiService.GetAllPrograms(categoryId);
+            var pageNo = 1;
+            var size = 3;
 
+            var programResponse = await _apiService.GetAllPrograms(categoryId);
             var programModels = _mapper.Map<List<ProgramModel>>(programResponse.Programs)
                 .OrderBy(p => p.Channel.Name)
                 .ToList();
 
             foreach (var programModel in programModels)
             {
-                var pageNo = 1;
-                var size = 3;
-
                 var podfileResponse = await _apiService.GetPodfilesByProgramId(programModel.Id, pageNo, size);
                 programModel.Podfiles = podfileResponse.Podfiles.Select(p => new PodfilesModel
                 {
@@ -65,13 +64,11 @@ namespace ProgramMVC.Controllers
 
 
             var programResponse = await _apiService.GetAllPrograms(categoryId);
-
             var programModels = _mapper.Map<List<ProgramModel>>(programResponse.Programs);
             var programModel = programModels.FirstOrDefault(p => p.Id == programId);
 
-           
-
             var podfileResponse = await _apiService.GetPodfilesByProgramId(programModel.Id, pageNo, size);
+
             programModel.Podfiles = podfileResponse.Podfiles.Select(p => new PodfilesModel
             {
                 Id = p.Id,
@@ -81,12 +78,10 @@ namespace ProgramMVC.Controllers
                 Duration = _utilityService.ConvertSecondsToCompleteDuration(p.Duration)
             }).ToList();
 
-            return View(programModel);
-        }
+            var programViewModel = new ProgramViewModel();
+            programViewModel.Program = programModel;
 
-        public IActionResult Privacy()
-        {
-            return View();
+            return View(programViewModel);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
