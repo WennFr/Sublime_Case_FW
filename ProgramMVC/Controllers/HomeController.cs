@@ -47,7 +47,7 @@ namespace ProgramMVC.Controllers
                 {
                     Id = p.Id,
                     Title = p.Title,
-                    PublishDateUtc = p.PublishDateUtc,
+                    PublishDate = p.PublishDateUtc,
                     Url = p.Url,
                     Duration = p.Duration,
                 }).ToList();

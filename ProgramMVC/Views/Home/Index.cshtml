@@ -2,15 +2,9 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
-
-
 <h2>Programlista - Humor</h2>
 
-@foreach (var program in Model.Programs)
+@foreach (var program in Model)
 {
     <h3>@program.Name @program.Id</h3>
 
@@ -19,11 +13,22 @@
         <li>
             <img src="@program.ProgramImage" alt="Program Image" />
             <p>@program.Description</p>
-
+            
             <h5>Senaste podavsnitten:</h5>
-            <ul>
-
-            </ul>
+            @foreach (var pod in @program.Podfiles)
+            {
+               
+                <ul>
+                   Titel: @pod.Title
+                </ul>
+                <ul>
+                    Publicerat: @pod.PublishDate
+                </ul>
+                <ul>
+                    Längd: @pod.Duration
+                </ul>
+            }
+           
         </li>
     </ul>
 }
