@@ -44,7 +44,10 @@ namespace ProgramMVC.Controllers
 
             foreach (var programModel in programModels)
             {
-                var podfileResponse = await _apiService.GetPodfilesByProgramId(programModel.Id); 
+                var pageNo = 1;
+                var size = 3;
+
+                var podfileResponse = await _apiService.GetPodfilesByProgramId(programModel.Id, pageNo, size); 
                 programModel.Podfiles = podfileResponse.Podfiles.Select(p => new PodfilesModel
                 {
                     Id = p.Id,

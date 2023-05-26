@@ -39,7 +39,7 @@ namespace APIServiceLibrary.Services
 
         }
 
-        public async Task<PodfilesResponseDTO> GetPodfilesByProgramId(int programId)
+        public async Task<PodfilesResponseDTO> GetPodfilesByProgramId(int programId,int pageNo, int size)
         {
 
             using var client = new HttpClient();
@@ -51,7 +51,7 @@ namespace APIServiceLibrary.Services
             var podfiles = new PodfilesResponseDTO();
 
             HttpResponseMessage response = await client.GetAsync(
-                $"http://api.sr.se/api/v2/podfiles?format=json&indent=true&pagination=false&programid={programId}");
+                $"http://api.sr.se/v2/podfiles?format=json&indent=true&pagination=true&page={pageNo}&size={size}&programid={programId}");
 
             if (response.IsSuccessStatusCode)
             {
