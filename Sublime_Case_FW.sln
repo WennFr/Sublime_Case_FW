@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgramMVC", "ProgramMVC\ProgramMVC.csproj", "{59633F1D-9156-4CCA-AB52-CA7EDA214476}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProgramMVC", "ProgramMVC\ProgramMVC.csproj", "{59633F1D-9156-4CCA-AB52-CA7EDA214476}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIServiceLibrary", "APIServiceLibrary\APIServiceLibrary.csproj", "{579295CF-E89E-4DB6-9A3B-65CFAD6EA2FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APIServiceLibrary", "APIServiceLibrary\APIServiceLibrary.csproj", "{579295CF-E89E-4DB6-9A3B-65CFAD6EA2FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UtilityServiceLibrary", "UtilityServiceLibrary\UtilityServiceLibrary.csproj", "{9B4FF5EB-A7C0-46F7-947C-ED784215B446}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{579295CF-E89E-4DB6-9A3B-65CFAD6EA2FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{579295CF-E89E-4DB6-9A3B-65CFAD6EA2FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{579295CF-E89E-4DB6-9A3B-65CFAD6EA2FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B4FF5EB-A7C0-46F7-947C-ED784215B446}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B4FF5EB-A7C0-46F7-947C-ED784215B446}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B4FF5EB-A7C0-46F7-947C-ED784215B446}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B4FF5EB-A7C0-46F7-947C-ED784215B446}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

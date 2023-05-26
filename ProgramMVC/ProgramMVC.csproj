@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\APIServiceLibrary\APIServiceLibrary.csproj" />
+    <ProjectReference Include="..\UtilityServiceLibrary\UtilityServiceLibrary.csproj" />
   </ItemGroup>
 
 </Project>
