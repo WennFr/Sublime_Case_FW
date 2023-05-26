@@ -1,11 +1,14 @@
 using APIServiceLibrary.Services;
+using AutoMapper;
+using Microsoft.AspNetCore.Hosting;
+using ProgramMVC.Infrastructure.Profiles;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddTransient<IAPIService, APIService>();
-
+builder.Services.AddAutoMapper(typeof(ProgramProfile));
 
 var app = builder.Build();
 

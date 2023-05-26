@@ -3,44 +3,32 @@ using ProgramMVC.Models;
 using System.Diagnostics;
 using APIServiceLibrary.DTO.EpisodeDTOs;
 using APIServiceLibrary.Services;
+using AutoMapper;
 using ProgramMVC.ViewModels;
 
 namespace ProgramMVC.Controllers
 {
     public class HomeController : Controller
     {
-        public HomeController(ILogger<HomeController> logger, IAPIService apiService)
+        public HomeController(ILogger<HomeController> logger, IAPIService apiService, IMapper mapper)
         {
             _logger = logger;
             _apiService = apiService;
+            _mapper = mapper;
         }
 
         private readonly ILogger<HomeController> _logger;
         private readonly IAPIService _apiService;
+        private readonly IMapper _mapper;
 
         public async Task<IActionResult> Index()
         {
             var categoryId = 133;
             var programResponse = await _apiService.GetAllPrograms(categoryId);
 
-            var programModels = programResponse.Programs.Select(p => new ProgramModel
-            {
-                Id = p.Id,
-                Name = p.Name,
-                ProgramImage = p.ProgramImage,
-                Description = p.Description,
-                ProgramCategory = new ProgramCategoryModel
-                {
-                    Id = p.ProgramCategory.Id,
-                    Name = p.ProgramCategory.Name
-                },
-                Channel = new ChannelModel
-                {
-                    Id = p.Channel.Id,
-                    Name = p.Channel.Name
-                }
-            }).OrderBy(p=> p.Channel.Name).ToList();
-
+            var programModels = _mapper.Map<List<ProgramModel>>(programResponse.Programs)
+                .OrderBy(p => p.Channel.Name)
+                .ToList();
 
             foreach (var programModel in programModels)
             {
