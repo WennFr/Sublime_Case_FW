@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using APIServiceLibrary.DTO.EpisodeDTOs;
 
 namespace APIServiceLibrary.Services
 {
@@ -11,6 +12,7 @@ namespace APIServiceLibrary.Services
 	{
 		Task<ProgramResponseDTO> GetAllPrograms();
 
+        Task<PodfilesResponseDTO> GetAllPodfiles(int programID);
 
-	}
+    }
 }
